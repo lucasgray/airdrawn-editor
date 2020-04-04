@@ -1,33 +1,44 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
+import { Divider } from 'antd';
 
 interface EditorProps {
-  text: string
+  text: Chapter[]
+}
+
+interface Chapter {
+  title: string,
+  content: string
 }
 
 export const Editor: FunctionComponent<EditorProps> = ({text}) => {
 
-  return <EditorText contentEditable>{text}</EditorText>
+  return (
+    <div>
+      <PageGutters>
+        <EditorText contentEditable>
+          {text.map(c =>
+            <>
+              <Divider>{c.title}</Divider>
+              <section>{c.content}</section>
+            </>
+          )}
+        </EditorText>
+      </PageGutters>
+    </div>
+)
 };
 
-
-const EditorText = styled.section`
-  font-family: "DejaVu Serif";
-  line-height: 26px;
-  font-size: 16px;
-  border: none;
-  outline: 0 solid transparent;
-  margin: 5px;
-  height: 90vh;
+const PageGutters = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: #202331;
   overflow-y: scroll;
   overflow-x: hidden;
-  ::selection {
-    background: #3C435E;
-  }
-  caret-color: #ab47bc;
+  height: 85vh;
   
   ::-webkit-scrollbar {
-    width: 8px; /* 1px wider than Lion. */
+    width: 8px;
     /* This is more usable for users trying to click it. */
     background-color: rgba(0,0,0,0);
     -webkit-border-radius: 100px;
@@ -39,15 +50,31 @@ const EditorText = styled.section`
   
   /* The scrollbar 'thumb' ...that marque oval shape in a scrollbar */
   ::-webkit-scrollbar-thumb:vertical {
-    /* This is the EXACT color of Mac OS scrollbars. 
-       Yes, I pulled out digital color meter */
     background: rgba(0,0,0,0.5);
     -webkit-border-radius: 100px;
   }
   ::-webkit-scrollbar-thumb:vertical:active {
-    background: rgba(0,0,0,0.61); /* Some darker color when you click it */
+    background: rgba(0,0,0,0.61); 
     -webkit-border-radius: 100px;
   }
+`;
+
+const EditorText = styled.section`
+  outline: 0 solid transparent;
+  margin: 15px 0;
+  max-width: 800px;
+  
+  section {
+    padding: 5px 10px;
+    background-color: #292D3E;
+  }
+  
+  ::selection {
+    background: #3C435E;
+  }
+  caret-color: #ab47bc;
+  
+
 `;
 
 

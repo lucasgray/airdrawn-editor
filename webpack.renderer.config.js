@@ -39,6 +39,41 @@ module.exports = merge.smart(baseConfig, {
           }
         ]
       },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader' // translates CSS into CommonJS
+          },
+          {
+            loader: 'less-loader', // compiles Less to CSS
+            options: {
+              modifyVars: {
+                'primary-color': '#BC1457',
+                'link-color': '#80cbc4',
+                'success-color': '#c3e88d',
+                'warning-color': '#ffcb6b',
+                'error-color': '#f07178',
+                'font-size-base': '14px',
+                'heading-color': '#A6ACCD',
+                'text-color': '#7E85AE',
+                'text-color-secondary': '#444267',
+                'disabled-color': '#515772',
+                'border-radius-base': '4px',
+                'border-color-base': '#2b2a3e',
+                'box-shadow-base': '0 2px 8px rgba(0, 0, 0, 0.15)',
+                'body-background': '#292D3E',
+                'menu-bg': '#34324a',
+                'border-color-split': '#BC1457'
+              },
+              javascriptEnabled: true
+            }
+          }
+        ]
+      },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       {
         enforce: 'pre',
