@@ -35,7 +35,7 @@ const PageGutters = styled.div`
   background-color: #202331;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 85vh;
+  height: calc(85vh + 50px);
   
   ::-webkit-scrollbar {
     width: 8px;
@@ -72,7 +72,7 @@ const EditorText = styled.section`
   ::selection {
     background: #3C435E;
   }
-  caret-color: #ab47bc;
+  caret-color: #BC1457;
   
 
 `;

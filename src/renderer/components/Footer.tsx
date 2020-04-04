@@ -13,7 +13,7 @@ const FooterWrapper = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #202331;
+  background-color: #292D3E;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
