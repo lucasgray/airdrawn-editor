@@ -1,47 +1,6 @@
-import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { Menu } from 'antd';
-import {
-  BookOutlined,
-  LineChartOutlined,
-  SettingOutlined,
-  SisternodeOutlined,
-  TagsOutlined,
-  TrophyOutlined
-} from '@ant-design/icons';
 
-export const Sidebar: FunctionComponent = () => 
-  <SidebarWrapper>
-    <Menu mode="inline" defaultSelectedKeys={['1']}>
-      <Menu.Item>
-        <BookOutlined />
-        <span className="nav-text">Projects</span>
-      </Menu.Item>
-      <Menu.Item>
-        <SisternodeOutlined />
-        <span className="nav-text">Versions</span>
-      </Menu.Item>
-      <Menu.Item>
-        <TagsOutlined />
-        <span className="nav-text">Tags</span>
-      </Menu.Item>
-      <Menu.Item>
-        <LineChartOutlined />
-        <span className="nav-text">Progress</span>
-      </Menu.Item>
-      <Menu.Item>
-        <TrophyOutlined />
-        <span className="nav-text">Achievements</span>
-      </Menu.Item>
-      <Menu.Item>
-        <SettingOutlined />
-        <span className="nav-text">Settings</span>
-      </Menu.Item>
-    </Menu>
-  </SidebarWrapper>;
-  
-  
-const SidebarWrapper = styled.div`
+export const SidebarWrapper = styled.div<{isRight: boolean}>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -51,9 +10,20 @@ const SidebarWrapper = styled.div`
   
   ul {
     height: 100vh;
+    min-width: 200px;
+    border-right: none;
   }
-`;
-
-const Nav = styled.div`
-  padding-top: 20px;
+  
+  .ant-menu-item::after {
+    left: ${props => props.isRight ?  "auto" : "0px"};
+    right: ${props => props.isRight ?  "0px" : "auto"};
+    border-right: ${props => props.isRight ?  "4px" : "3px"} solid #BC1457;
+  }
+  .ant-menu-item-selected::after {
+    left: ${props => props.isRight ?  "auto" : "0px"};
+    right: ${props => props.isRight ?  "0px" : "auto"};
+    border-right: ${props => props.isRight ?  "4px" : "3px"} solid #BC1457;
+  }
+  
+  
 `;
