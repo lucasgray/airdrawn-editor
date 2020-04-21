@@ -4,18 +4,21 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Title from 'antd/lib/typography/Title';
 import * as jetpack from 'fs-jetpack';
 import Helmet from 'react-helmet';
-import { Editor } from './Editor';
+import { Editor } from './editor/Editor';
 import { SettingsSidebar } from './SettingsSidebar';
 import 'antd/dist/antd.dark.less';
 import { Footer } from './Footer';
 import { ProjectSidebar } from './ProjectSidebar';
+
+const RunstrikeTowerDefense = require('../../images/runstrike_tower_defense.png');
+const RandomBuilding = require('../../images/Buildings_Building005.png');
 
 const Application = () => {
   //
   // const defaultState = useState
   //
 
-  const foo = jetpack.list(".");
+  const foo = jetpack.list('.');
 
   return (
     <>
@@ -28,7 +31,16 @@ const Application = () => {
           <Header>
             <Title>Airdrawn Editor</Title>
           </Header>
-          <Editor text={text} />
+          <Editor
+            cartoons={[
+              {
+                id: 1,
+                image: require('../../images/runstrike_tower_defense.png'),
+                notes: '',
+                alt: ''
+              }
+            ]}
+            />
         </MainContent>
         <SettingsSidebar />
         <Footer />
@@ -58,6 +70,9 @@ const Header = styled.section`
     font-family: 'Parisienne', cursive;
     margin-top: 5px;
   }
+
+  border-bottom: 4px solid #31364a;
+  z-index: 1;
   display: flex;
   justify-content: center;
   cursor: default;

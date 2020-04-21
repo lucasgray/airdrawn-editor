@@ -1,29 +1,21 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { Divider } from 'antd';
+import { CartoonPanel } from './CartoonPanel';
+import { Cartoon } from '../../types/State';
 
 interface EditorProps {
-  text: Chapter[];
+  cartoons: Cartoon[];
   // onChange: (c: Chapter, idx: number) => void;
 }
 
-interface Chapter {
-  title: string;
-  content: string;
-}
+
 // onChange={e => onChange(e.currentTarget.nodeValue, i)}
-export const Editor: FunctionComponent<EditorProps> = ({ text }) => {
+export const Editor: FunctionComponent<EditorProps> = ({ cartoons }) => {
   return (
     <div>
       <PageGutters>
         <EditorText>
-          {text.map((c, i) => (
-            <>
-              <Divider>{c.title}</Divider>
-
-              <section contentEditable>{c.content}</section>
-            </>
-          ))}
+          {cartoons.map((c) => <CartoonPanel key={c.id} {...c} />)}
         </EditorText>
       </PageGutters>
     </div>
@@ -60,21 +52,23 @@ const PageGutters = styled.div`
   }
 `;
 
+// TODO break me up
 const EditorText = styled.section`
   
   margin: 15px 0;
   max-width: 900px;
 
-  section {
+  .notes {
     padding: 5px 10px;
     margin: 0 20px;
     background-color: #292d3e;
     outline: 0 solid transparent;
   }
-
-  ::selection {
-    background: #3c435e;
+  
+  .preview-image {
+    max-width: 100%
   }
+
   caret-color: #bc1457;
   
   .ant-divider-inner-text {
