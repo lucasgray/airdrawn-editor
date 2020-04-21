@@ -2,10 +2,11 @@ import React, { FunctionComponent } from 'react';
 import { Menu } from 'antd';
 import { BookOutlined, SisternodeOutlined, TagsOutlined } from '@ant-design/icons';
 import SubMenu from 'antd/es/menu/SubMenu';
-import { SidebarWrapper } from './Sidebar';
+import { SidebarWrapper, TopMenuClickable } from './Sidebar';
 
 export const ProjectSidebar: FunctionComponent = () =>
   <SidebarWrapper isRight={false}>
+    <TopMenuClickable />
     <Menu mode="inline" defaultOpenKeys={['chapters-sub']}>
       <SubMenu
         key="chapters-sub"

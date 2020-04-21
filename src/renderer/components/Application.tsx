@@ -4,19 +4,29 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Title from 'antd/lib/typography/Title';
 import * as jetpack from 'fs-jetpack';
 import Helmet from 'react-helmet';
+import {useState} from "react";
 import { Editor } from './editor/Editor';
 import { SettingsSidebar } from './SettingsSidebar';
 import 'antd/dist/antd.dark.less';
 import { Footer } from './Footer';
 import { ProjectSidebar } from './ProjectSidebar';
 
-const RunstrikeTowerDefense = require('../../images/runstrike_tower_defense.png');
-const RandomBuilding = require('../../images/Buildings_Building005.png');
-
 const Application = () => {
   //
-  // const defaultState = useState
-  //
+  const [cartoons, setCartoons] = useState([
+      {
+          id: "1",
+          image: require('../images/runstrike_tower_defense.png'),
+          notes: 'asdf asfg as fgdads fgsdfg sdgfs',
+          alt: ''
+      },
+      {
+          id: "2",
+          image: require('../images/Buildings_Building005.png'),
+          notes: 'asd fas adf gsdffgds gds g gsh dfgs dgfsdfg s dfgsgf d',
+          alt: ''
+      }
+  ]);
 
   const foo = jetpack.list('.');
 
@@ -32,14 +42,8 @@ const Application = () => {
             <Title>Airdrawn Editor</Title>
           </Header>
           <Editor
-            cartoons={[
-              {
-                id: 1,
-                image: require('../../images/runstrike_tower_defense.png'),
-                notes: '',
-                alt: ''
-              }
-            ]}
+            cartoons={cartoons}
+            setCartoons={setCartoons}
             />
         </MainContent>
         <SettingsSidebar />
@@ -56,6 +60,7 @@ const AppWrapper = styled.section`
   justify-content: center;
   height: 100vh;
   overflow-y: hidden;
+  user-select: none;
 `;
 
 const MainContent = styled.section`
@@ -71,6 +76,7 @@ const Header = styled.section`
     margin-top: 5px;
   }
 
+  -webkit-app-region: drag;
   border-bottom: 4px solid #31364a;
   z-index: 1;
   display: flex;

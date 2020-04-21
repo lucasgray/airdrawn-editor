@@ -27,3 +27,9 @@ export const SidebarWrapper = styled.div<{isRight: boolean}>`
   
   
 `;
+
+export const TopMenuClickable = styled.div`
+  -webkit-app-region: drag;
+  height: 20px;
+  width: 100%;
+`

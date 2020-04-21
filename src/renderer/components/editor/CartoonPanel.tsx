@@ -1,13 +1,14 @@
 import { Col, Row } from 'antd';
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
+import {Cartoon} from "../../types/State";
 
 export const CartoonPanel: FunctionComponent<Cartoon> = ({image, alt, notes}) =>
 <CartoonRow>
-  <Col span={12}>
+  <Col span={4}>
     <img src={image} alt={alt} className="preview-image" />
   </Col>
-  <Col span={12}>
+  <Col span={6}>
     <section className="notes" contentEditable>
       {notes}
     </section>
@@ -35,7 +36,11 @@ export const CartoonPanel: FunctionComponent<Cartoon> = ({image, alt, notes}) =>
 // </Col>
 // </CartoonRow>
 
-const CartoonRow = styled(Row)`
+const CartoonRow = styled.section`
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-around;
   background-color: #3c435e;
   margin: 10px 0
 `;

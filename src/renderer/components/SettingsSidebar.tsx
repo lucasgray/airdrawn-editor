@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { Menu } from 'antd';
 import { ContainerOutlined, LineChartOutlined, SettingOutlined, TrophyOutlined } from '@ant-design/icons';
-import { SidebarWrapper } from './Sidebar';
+import {SidebarWrapper, TopMenuClickable} from './Sidebar';
 
 export const SettingsSidebar: FunctionComponent = () =>
   <SidebarWrapper isRight>
+    <TopMenuClickable />
     <Menu mode="inline" defaultSelectedKeys={['1']}>
       <Menu.Item>
         <ContainerOutlined />

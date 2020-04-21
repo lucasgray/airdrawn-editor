@@ -1,6 +1,6 @@
 
 export interface Cartoon {
-  id: number
+  id: string,
   notes: string,
   image: string,
   alt: string
