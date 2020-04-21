@@ -32,10 +32,7 @@ module.exports = merge.smart(baseConfig, {
         use: [
           'file-loader',
           {
-            loader: 'image-webpack-loader',
-            options: {
-              disable: true
-            }
+            loader: 'image-webpack-loader'
           }
         ]
       },
